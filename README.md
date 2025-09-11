@@ -2,7 +2,12 @@
 A doctor appointment website build with mongodb, express, reactjs and nodejs.
 
 # About this project 
-Doctor Appointment website quite useful website. In this project it consists of 3 parts. First one is backend, second one is frontend and last one is admin. You can easly sign up and sign in that page. And then you can see home, all doctors , about and contact page. If you go to the all doctor page you can choose specialization of doctor. If you choose one doctor after doing that immediately will going to the doctor personel page, and then you will choose easely appontment date. If maybe you change you desicion, you should profile page and cancel you appointment. I gave some rights the admin panel. A few of them, add a doctor personel information, graduation, specialization and picture and so on. This website I made three weeks it took quite such a long time but it's very developing myself and learn lots of new things.
+The Doctor Appointment Website is a very useful platform. This project consists of three parts: the backend, the frontend, and the admin panel. You can easily sign up and sign in on the website. After logging in, you can access the Home, All Doctors, About, and Contact pages.
+
+On the All Doctors page, you can choose a doctor based on their specialization. After selecting a doctor, you will be taken to their personal page, where you can easily choose an appointment date. If you change your decision later, you can go to your Profile page and cancel your appointment.
+
+The Admin panel has special rights, such as adding a doctor’s personal information, graduation details, specialization, profile picture, and more.
+
 
 ## Technologies
 * `MONGODB`
