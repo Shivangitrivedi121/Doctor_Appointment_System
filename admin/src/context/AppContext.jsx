@@ -10,6 +10,10 @@ const AppContextProvider = (props) => {
     const today = new Date()
     const birtDate = new Date(dob)
 
+    if (isNaN(birtDate.getTime())) {
+      return 'N/A'
+    }
+
     let age = today.getFullYear() - birtDate.getFullYear()
     return age
   }

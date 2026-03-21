@@ -1,12 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
-  font-family: Outfit;
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F8F9FA;
+  color: #333333;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Base Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation Utility Classes */
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Delay Utilites */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Stagger Logic for Lists */
+.stagger-container > * {
+  opacity: 0;
+}
+
+.stagger-container > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-container > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-container > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-container > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-container > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-container > *:nth-child(6) { animation-delay: 0.6s; }
+.stagger-container > *:nth-child(7) { animation-delay: 0.7s; }
+.stagger-container > *:nth-child(8) { animation-delay: 0.8s; }
+
 
 .active hr{
   @apply block

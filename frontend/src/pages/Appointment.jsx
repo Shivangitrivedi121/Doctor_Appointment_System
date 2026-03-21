@@ -126,54 +126,54 @@ const Appointment = () => {
       {/* ---------- Doctor Details ---------- */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div>
-          <img className='bg-primary w-full sm:max-w-72 rounded-lg' src={docInfo.image} alt="" />
+          <img className='bg-primary w-full sm:max-w-72 rounded-xl object-cover shadow-lg' src={docInfo.image} alt="" />
         </div>
 
-        <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
+        <div className="flex-1 border border-gray-200 rounded-2xl p-8 py-7 bg-white/50 backdrop-blur-md shadow-xl mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
           {/* ---------- Doc Info : name, degree, experience ---------- */}
-          <p className="flex items-center gap-2 text-2xl font-medium text-gray-900">{docInfo.name} <img className='w-5' src={assets.verified_icon} alt="" /></p>
+          <p className="flex items-center gap-2 text-3xl font-medium text-gray-900">{docInfo.name} <img className='w-5' src={assets.verified_icon} alt="" /></p>
 
-          <div className="flex items-center gap-2 text-sm mt-1 text-gray-600">
+          <div className="flex items-center gap-2 text-sm mt-2 text-gray-600">
             <p>{docInfo.degree} - {docInfo.speciality}</p>
-            <button className='py-0.5 px-2 border text-xs rounded-full'>{docInfo.experience}</button>
+            <button className='py-0.5 px-3 border border-gray-300 text-xs rounded-full shadow-sm'>{docInfo.experience}</button>
           </div>
 
           {/* ---------- Doctor About ---------- */}
-          <div>
-            <p className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">About <img src={assets.info_icon} alt="" /></p>
-            <p className="text-sm text-gray-500 max-w-[700px] mt-1">{docInfo.about}</p>
+          <div className="mt-5">
+            <p className="flex items-center gap-1 text-sm font-medium text-gray-900">About <img className='w-4' src={assets.info_icon} alt="" /></p>
+            <p className="text-sm text-gray-600 max-w-[700px] mt-2 leading-relaxed">{docInfo.about}</p>
           </div>
 
-          <p className="text-gray-500 font-medium mt-4">Appointment fee: <span className='text-gray-600 font-bold'>{currencySymbol}{docInfo.fees}</span></p>
+          <p className="text-gray-600 font-medium mt-6">Appointment fee: <span className='text-gray-900 text-lg font-bold ml-1'>{currencySymbol}{docInfo.fees}</span></p>
         </div>
       </div>
 
       {/* ---------- Booking Slots ---------- */}
-      <div className="sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700">
-        <p>Booking slots</p>
+      <div className="sm:ml-72 sm:pl-4 mt-8 font-medium text-gray-700">
+        <p className="text-xl mb-6">Booking slots</p>
 
-        <div className="flex gap-3 items-center w-full overflow-x-scroll mt-4">
+        <div className="flex gap-4 items-center w-full overflow-x-scroll pb-4 -webkit-scrollbar">
           {
             docSlots.length && docSlots.map((item, index) => (
-              <div onClick={() => setSlotIndex(index)} className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${slotIndex === index ? 'bg-primary text-white' : 'border border-gray-200'}`} key={index}>
+              <div onClick={() => setSlotIndex(index)} className={`text-center py-6 min-w-16 rounded-full cursor-pointer hover:scale-105 hover:shadow-md transition-all duration-300 ${slotIndex === index ? 'bg-primary text-white shadow-lg' : 'border border-gray-200 bg-white'}`} key={index}>
                 <p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
-                <p>{item[0] && item[0].datetime.getDate()}</p>
+                <p className="mt-1 font-bold">{item[0] && item[0].datetime.getDate()}</p>
               </div>
             ))
           }
         </div>
 
-        <div className='flex items-center gap-3 w-full overflow-x-scroll mt-4'>
+        <div className='flex items-center gap-3 w-full overflow-x-scroll mt-4 pb-4 -webkit-scrollbar'>
           {
             docSlots.length && docSlots[slotIndex].map((item, index) => (
-              <p onClick={() => setSlotTime(item.time)} className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${item.time === slotTime ? 'bg-primary text-white' : 'text-gray-400 border border-gray-300'}`} key={index}>
+              <p onClick={() => setSlotTime(item.time)} className={`text-sm font-light flex-shrink-0 px-6 py-2 rounded-full cursor-pointer hover:scale-105 transition-all duration-300 ${item.time === slotTime ? 'bg-primary text-white shadow-md font-medium' : 'text-gray-600 border border-gray-300 bg-white hover:border-primary'}`} key={index}>
                 {item.time.toLowerCase()}
               </p>
             ))
           }
         </div>
 
-        <button onClick={bookAppointment} className="bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6">Book an appointment</button>
+        <button onClick={bookAppointment} className="bg-primary hover:bg-blue-600 text-white font-medium px-14 py-4 rounded-full my-8 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">Book an appointment</button>
       </div>
 
       {/* Listing Related Doctors */}
