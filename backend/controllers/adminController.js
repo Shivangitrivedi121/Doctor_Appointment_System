@@ -5,6 +5,7 @@ import doctorModel from "../models/doctorModel.js"
 import jwt from 'jsonwebtoken'
 import appointmentModel from "../models/appointmentModel.js"
 import userModel from "../models/userModel.js"
+import adminModel from "../models/adminModel.js"
 
 // API for adding doctor
 const addDoctor = async (req, res) => {
@@ -60,7 +61,15 @@ const loginAdmin = async (req, res) => {
 
     const { email, password } = req.body
 
-    if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+    const admin = await adminModel.findOne({ email })
+
+    if (!admin) {
+      return res.json({ success: false, message: 'Invalid Credentials' })
+    }
+
+    const isMatch = await bcrypt.compare(password, admin.password)
+
+    if (isMatch) {
       const token = jwt.sign(email + password, process.env.JWT_SECRET)
       res.json({ success: true, token })
     } else {
